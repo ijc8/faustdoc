@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        
+        <link rel="canonical" href="https://ijc8.me/faustdoc/manual/optimizing/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
         <title>Optimizing the Code - Faust Documentation</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
@@ -16,7 +16,7 @@
         <link href="/css/quickref.css" rel="stylesheet">
         <link href="/rail/railroad-diagrams.css" rel="stylesheet">
 
-        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/jquery-3.6.0.min.js" defer></script>
         <script src="../../js/bootstrap.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
@@ -529,15 +529,12 @@ or the read and write indices move themselves along the delay line (with two pos
 <p>Here is an example of  a Faust program with 10 delay lines in parallel, each delaying a separated input, with three ways of compiling it (using the defaut <code>-scalar</code> mode):</p>
 <!-- faust-run -->
 <div class="faust-run"><img src="exfaust0/exfaust0.svg" class="mx-auto d-block">
+<faust-editor><!--
 
-<pre><code>
-process = par(i, 10, @(i+1)) :&gt; _;
+process = par(i, 10, @(i+1)) :> _;
 
-</code></pre>
-
-
-<a href="https://faustide.grame.fr/?code=https://faustdoc.grame.fr/manual/optimizing/exfaust0/exfaust0.dsp" target="editor">
-<button type="button" class="btn btn-primary">Try it Yourself >></button></a>
+--></faust-editor>
+<br>
 </div>
 <!-- /faust-run -->
 
@@ -785,15 +782,12 @@ virtual void compute(int count,
 <p>Here is an example of a Faust program with 10 recursive blocks in parallel, each using a delay line of increasing value:</p>
 <!-- faust-run -->
 <div class="faust-run"><img src="exfaust1/exfaust1.svg" class="mx-auto d-block">
+<faust-editor><!--
 
-<pre><code>
-process = par(i, 10, + ~ @(i+1)) :&gt; _;
+process = par(i, 10, + ~ @(i+1)) :> _;
 
-</code></pre>
-
-
-<a href="https://faustide.grame.fr/?code=https://faustdoc.grame.fr/manual/optimizing/exfaust1/exfaust1.dsp" target="editor">
-<button type="button" class="btn btn-primary">Try it Yourself >></button></a>
+--></faust-editor>
+<br>
 </div>
 <!-- /faust-run -->
 
@@ -1011,5 +1005,6 @@ struct mydsp : public dsp {
     </div>
 </div>
 
+        <script src="https://cdn.jsdelivr.net/npm/@grame/faust-web-component@0.2.25/dist/faust-web-component.js" defer></script>
     </body>
 </html>
